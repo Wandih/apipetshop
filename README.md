@@ -1,0 +1,2 @@
+# apipetshop
+Treinando CRUD + Sequelize 
