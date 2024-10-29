@@ -1,5 +1,6 @@
 const express = require('express')
 const routes = require('./src/routes/pet')
+const database = require('./src/config/pet')
 
 const app = express()
 

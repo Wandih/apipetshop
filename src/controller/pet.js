@@ -8,7 +8,7 @@ class ControllerPet{
 
             const pets = await ServicePet.GetPets()
 
-            res.send({msg: pets})
+            res.send({pets: pets})
             
         } catch (error) {
 
@@ -21,15 +21,11 @@ class ControllerPet{
 
         try {
 
-            const nome = req.body.nome
+            const {nome, especie, idade} = req.body
 
-            const especie = req.body.especie
+            const pets = await ServicePet.CreatePet(nome, especie, idade)
 
-            const idade = req.body.idade
-
-            const pets = ServicePet.CreatePet(nome, especie, idade)
-
-            res.send({msg: pets})
+            res.send({msg: 'Pet adicionado com sucesso'})
             
         } catch (error) {
 
@@ -42,17 +38,13 @@ class ControllerPet{
 
         try {
 
-            const id = req.params.id
+            const {id} = req.params
 
-            const nome = req.body.nome
+            const {nome, especie, idade} = req.body
 
-            const especie = req.body.especie
+            const pets = await ServicePet.UpdatePet(id, nome, especie, idade)
 
-            const idade = req.body.idade
-
-            const pets = ServicePet.UpdatePet(id, nome, especie, idade)
-
-            res.send({msg: pets})
+            res.send({msg: 'Pet atualizado com sucesso'})
             
         } catch (error) {
 
@@ -65,11 +57,11 @@ class ControllerPet{
 
         try {
 
-            const id = req.params.id
+            const {id} = req.params
 
             const pets = await ServicePet.DeletePet(id)
 
-            res.send({msg: pets})
+            res.send({msg: 'Pet deletado com sucesso'})
             
         } catch (error) {
 
